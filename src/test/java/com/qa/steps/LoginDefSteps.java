@@ -1,11 +1,18 @@
 package com.qa.steps;
 
 
+import java.util.List;
+import java.util.Map;
+
+import javax.swing.plaf.synth.SynthOptionPaneUI;
+
 import org.junit.Assert;
 
 import com.qa.driver.Driverfactory;
 import com.qa.pages.SigninPage;
+import com.qa.util.Datatable;
 
+import io.cucumber.java.DataTableType;
 import io.cucumber.java.en.*;
 
 public class LoginDefSteps {
@@ -40,5 +47,25 @@ public class LoginDefSteps {
 		
 	}
 	
-}
+	@DataTableType(replaceWithEmptyString = "[anonymous]")
+	public Datatable readDetails(Map<String,String> values) {
+		return new Datatable(
+				values.get("name"),
+				values.get("email")
+				);
+		
+	}
+	@When("Enter name and email address details")
+	public void When_Enter_name_and_email_address_details(List<Datatable> elements) {
+		for(Datatable element : elements) {
+			login.TypeText(element);
+		}
+		
+	
+		
+	}
+	
+	}
+	
+
 

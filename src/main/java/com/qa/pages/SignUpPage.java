@@ -1,5 +1,8 @@
 package com.qa.pages;
 
+import java.util.List;
+import java.util.Map;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -13,9 +16,11 @@ public class SignUpPage {
 		this.driver=driver;
 		PageFactory.initElements(driver, this);
 	}
+	@FindBy(xpath="//div[@id='uniform-id_gender1']")
+	WebElement titleMr;
 	
 	@FindBy(xpath="//div[@id='uniform-id_gender2']")
-	WebElement title;
+	WebElement titleMrs;
 	
 	@FindBy(name="password")
 	WebElement password;
@@ -67,7 +72,7 @@ public class SignUpPage {
 	WebElement CreateAccount;
 	
 	public void FillRegistartionForm() {
-		CommonPageActions.clickElement(title);
+		CommonPageActions.clickElement(titleMrs);
 		CommonPageActions.typeKeys(password, "Archana@123");
 		CommonPageActions.SelectDropdown(days, "29");
 		CommonPageActions.SelectDropdown(month, "4");
@@ -88,6 +93,27 @@ public class SignUpPage {
 	
 	public void createAccount() {
 		CommonPageActions.clickElement(CreateAccount);
+	}
+
+	public void FillRegistartionFormDetails(List<Map<String, String>> data) {
+		
+		CommonPageActions.clickElement(titleMr);
+		CommonPageActions.typeKeys(password,data.get(0).get("password"));
+		CommonPageActions.SelectDropdown(days, data.get(0).get("days"));
+		CommonPageActions.SelectDropdown(month, data.get(0).get("month"));
+		CommonPageActions.SelectDropdown(year, data.get(0).get("year"));
+		CommonPageActions.clickElement(newsletterchbox);
+		CommonPageActions.clickElement(splOfferChbox);
+
+		CommonPageActions.typeKeys(first_name, data.get(0).get("first_name"));
+		CommonPageActions.typeKeys(last_name, data.get(0).get("last_name"));
+		CommonPageActions.typeKeys(company, data.get(0).get("company"));
+		CommonPageActions.typeKeys(address, data.get(0).get("address"));
+		CommonPageActions.typeKeys(country, data.get(0).get("country"));
+		CommonPageActions.typeKeys(state, data.get(0).get("state"));
+		CommonPageActions.typeKeys(city, data.get(0).get("city"));
+		CommonPageActions.typeKeys(zipcode,data.get(0).get("zipcode"));
+		CommonPageActions.typeKeys(mobile_number, data.get(0).get("mobile_number"));
 	}
 	
 
