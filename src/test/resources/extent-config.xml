@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extentreports>
+<configuration>
+    <encoding>UTF-8</encoding>
+    <protocol>https</protocol>
+    <title>Automation Test Report</title>
+    <reportName>Test Report</reportName>
+    <theme>dark</theme>
+    <timeStampFormat>MMM dd, yyyy HH:mm:ss</timeStampFormat>
+    <documentTitle>Test Automation Report</documentTitle>
+       <!--<testViewChartLocation>bottom</testViewChartLocation> --> 
+        
+        <!-- custom javascript -->
+        <scripts>
+            <![CDATA[
+                $(document).ready(function() {
+                    
+                });
+            ]]>
+        </scripts>
+        
+        <!-- custom styles -->
+        <styles>
+            <![CDATA[
+                
+            ]]>
+        </styles>
+</configuration>
+</extentreports>

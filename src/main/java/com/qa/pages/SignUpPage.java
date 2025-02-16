@@ -71,50 +71,60 @@ public class SignUpPage {
 	@FindBy(xpath="//button[contains(text(),\"Create Account\")]")
 	WebElement CreateAccount;
 	
+	private void selectTitle(String title) {
+		if(title.toUpperCase().equals("MR")) {
+			CommonPageActions.clickElement(titleMr);
+		}
+		else {
+			CommonPageActions.clickElement(titleMrs);	
+		}
+	}
 	public void FillRegistartionForm() {
-		CommonPageActions.clickElement(titleMrs);
-		CommonPageActions.typeKeys(password, "Archana@123");
-		CommonPageActions.SelectDropdown(days, "29");
+		CommonPageActions.clickElement(titleMr);
+		CommonPageActions.typeKeys(password, "Krish@123");
+		CommonPageActions.SelectDropdown(days, "20");
 		CommonPageActions.SelectDropdown(month, "4");
-		CommonPageActions.SelectDropdown(year, "1996");
+		CommonPageActions.SelectDropdown(year, "1906");
 		CommonPageActions.clickElement(newsletterchbox);
 		CommonPageActions.clickElement(splOfferChbox);
 
-		CommonPageActions.typeKeys(first_name, "Archanadevi");
-		CommonPageActions.typeKeys(last_name, "KN");
-		CommonPageActions.typeKeys(company, "TCS");
-		CommonPageActions.typeKeys(address, "KANARA HOUSE");
+		CommonPageActions.typeKeys(first_name, "Krish");
+		CommonPageActions.typeKeys(last_name, "Dev");
+		CommonPageActions.typeKeys(company, "Luxsoft");
+		CommonPageActions.typeKeys(address, "Gemini HOUSE");
 		CommonPageActions.typeKeys(country, "India");
 		CommonPageActions.typeKeys(state, "Kerala");
-		CommonPageActions.typeKeys(city, "Thrissur");
+		CommonPageActions.typeKeys(city, "Wayanad");
 		CommonPageActions.typeKeys(zipcode, "680581");
-		CommonPageActions.typeKeys(mobile_number, "8281805256");
+		CommonPageActions.typeKeys(mobile_number, "6389422502");
 	}
 	
 	public void createAccount() {
 		CommonPageActions.clickElement(CreateAccount);
 	}
 
-	public void FillRegistartionFormDetails(List<Map<String, String>> data) {
-		
-		CommonPageActions.clickElement(titleMr);
-		CommonPageActions.typeKeys(password,data.get(0).get("password"));
-		CommonPageActions.SelectDropdown(days, data.get(0).get("days"));
-		CommonPageActions.SelectDropdown(month, data.get(0).get("month"));
-		CommonPageActions.SelectDropdown(year, data.get(0).get("year"));
+	public void FillRegistartionFormDetails(List<Map<String, String>> data,int row_num) {
+		selectTitle(data.get(row_num).get("title"));
+		CommonPageActions.typeKeys(password,data.get(row_num).get("password"));
+		CommonPageActions.SelectDropdown(days, data.get(row_num).get("days"));
+		CommonPageActions.SelectDropdown(month, data.get(row_num).get("month"));
+		CommonPageActions.SelectDropdown(year, data.get(row_num).get("year"));
 		CommonPageActions.clickElement(newsletterchbox);
 		CommonPageActions.clickElement(splOfferChbox);
 
-		CommonPageActions.typeKeys(first_name, data.get(0).get("first_name"));
-		CommonPageActions.typeKeys(last_name, data.get(0).get("last_name"));
-		CommonPageActions.typeKeys(company, data.get(0).get("company"));
-		CommonPageActions.typeKeys(address, data.get(0).get("address"));
-		CommonPageActions.typeKeys(country, data.get(0).get("country"));
-		CommonPageActions.typeKeys(state, data.get(0).get("state"));
-		CommonPageActions.typeKeys(city, data.get(0).get("city"));
-		CommonPageActions.typeKeys(zipcode,data.get(0).get("zipcode"));
-		CommonPageActions.typeKeys(mobile_number, data.get(0).get("mobile_number"));
+		CommonPageActions.typeKeys(first_name, data.get(row_num).get("first_name"));
+		CommonPageActions.typeKeys(last_name, data.get(row_num).get("last_name"));
+		CommonPageActions.typeKeys(company, data.get(row_num).get("company"));
+		CommonPageActions.typeKeys(address, data.get(row_num).get("address"));
+		CommonPageActions.typeKeys(country, data.get(row_num).get("country"));
+		CommonPageActions.typeKeys(state, data.get(row_num).get("state"));
+		CommonPageActions.typeKeys(city, data.get(row_num).get("city"));
+		CommonPageActions.typeKeys(zipcode,data.get(row_num).get("zipcode"));
+		CommonPageActions.typeKeys(mobile_number, data.get(row_num).get("mobile_number"));
 	}
+
+	
+
 	
 
 }

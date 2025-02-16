@@ -6,8 +6,26 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class Configreader {
-	private Properties prop;
-	public Properties init_prop() {
+	private  Properties prop;
+//	public Properties init_prop() {
+//		prop= new Properties();
+//		try {
+//			
+//			FileInputStream ip = new FileInputStream("./src/test/resources/config/config.properties");
+//			prop.load(ip);
+//
+//		}
+//		catch (FileNotFoundException e) {
+//			e.printStackTrace();
+//		}
+//		catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//		return prop;
+//	}
+//	
+	
+	public Configreader() {
 		prop= new Properties();
 		try {
 			
@@ -21,9 +39,12 @@ public class Configreader {
 		catch (IOException e) {
 			e.printStackTrace();
 		}
-		return prop;
 	}
-	
+
+
+	public  String getPropertyValue(String Key) {
+		return prop.getProperty(Key);
+	}
 	
 
 }
